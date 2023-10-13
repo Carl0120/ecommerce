@@ -1,36 +1,48 @@
 package com.project.model.entity;
 
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
+
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
+@Entity
+@Table(name = "users")
 public class UserEntity {
-   private Integer id;
-   private String name;
-   private String username;
-   private String password;
-   private String email;
-   private String address;
-   private String phone;
-   private String rol;
 
-   @Override
-   public String toString() {
-      return "UserEntity{" +
-              "id=" + id +
-              ", name='" + name + '\'' +
-              ", username='" + username + '\'' +
-              ", password='" + password + '\'' +
-              ", email='" + email + '\'' +
-              ", address='" + address + '\'' +
-              ", phone='" + phone + '\'' +
-              ", rol='" + rol + '\'' +
-              '}';
-   }
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   private Integer id;
+
+   @Column(nullable = false, length = 50)
+   private String name;
+
+   @Column(nullable = false, unique = true, length = 50)
+   private String username;
+
+   @Column(nullable = false, unique = true)
+   private String password;
+
+   @Column(nullable = false, unique = true)
+   private String email;
+
+   private String address;
+
+   @Column(nullable = false, unique = true, length = 50)
+   private String phone;
+
+   @OneToMany(mappedBy = "user")
+   private List<ProductEntity> products;
+
+   @ManyToOne
+   @JoinColumn(name = "rolId", nullable = false)
+   private RolEntity rol;
+
+
 }
