@@ -44,5 +44,8 @@ public class UserEntity {
    @JoinColumn(name = "rolId", nullable = false)
    private RolEntity rol;
 
+   @OneToMany(mappedBy = "user")
+   private List<OrderEntity> orders;
+
 
 }

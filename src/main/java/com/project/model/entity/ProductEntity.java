@@ -25,7 +25,7 @@ public class ProductEntity {
 
     private double price;
 
-    private int quantity;
+    private int stock;
 
     @ManyToOne
     @JoinColumn(name = "userId", nullable = false)
