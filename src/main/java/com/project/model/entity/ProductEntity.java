@@ -35,4 +35,17 @@ public class ProductEntity {
     @JoinColumn(name = "typeId", nullable = false)
     private TypeProduct type;
 
+    @Override
+    public String toString() {
+        return "ProductEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
+                ", price=" + price +
+                ", stock=" + stock +
+                ", user=" + user +
+                ", type=" + type +
+                '}';
+    }
 }

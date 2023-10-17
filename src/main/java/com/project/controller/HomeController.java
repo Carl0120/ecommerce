@@ -1,16 +1,16 @@
 package com.project.controller;
 
-import com.project.Config.Routes;
+import com.project.Util.Routes;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-@RequestMapping("/admin")
-public class AdminController {
+@RequestMapping
+public class HomeController {
     @GetMapping("")
-    public ModelAndView admin(){
+    public ModelAndView home(){
         return new ModelAndView(Routes.ADMIN_HOME);
     }
 
